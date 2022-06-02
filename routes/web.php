@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use function PHPUnit\Framework\fileExists;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts');
+});
+
+
+Route::get('posts/{post}', function($page) {
+    $path = "../resources/posts/{$page}.html";
+
+    // Check file existance
+    if (! file_exists($path)) {
+        return redirect("/");
+    }
+
+    $post = file_get_contents($path);
+
+    return view('post', [
+        "post" => $post
+    ]);
 });

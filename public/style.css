@@ -1,0 +1,14 @@
+body {
+    max-width: 600px;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+article {
+    padding: 1rem;
+    margin-bottom: 4rem;
+}
+
+p {
+    line-height: 1.6;
+}
