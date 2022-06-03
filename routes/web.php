@@ -14,21 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
     return view('posts');
+
 });
 
 
 Route::get('posts/{post}', function($page) {
+
     $path = "../resources/posts/{$page}.html";
 
-    // Check file existance
-    if (! file_exists($path)) {
+    if (!file_exists($path)) {
         return redirect("/");
     }
 
-    $post = file_get_contents($path);
+    $post = cache()->remember("posts.{$page}", now()->addMinute(), fn() => file_get_contents($path));
 
-    return view('post', [
-        'post' => $post
-    ]);
+    return view('post', ['post' => $post]);
+    
 })->where('post', '[A-z0-9-_]+');
