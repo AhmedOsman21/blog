@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use function PHPUnit\Framework\fileExists;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
