@@ -31,6 +31,6 @@ Route::get('posts/{post}', function($page) {
     $post = file_get_contents($path);
 
     return view('post', [
-        "post" => $post
+        'post' => $post
     ]);
-});
+})->where('post', '[A-z0-9-_]+');
