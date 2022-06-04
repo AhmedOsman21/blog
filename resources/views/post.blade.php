@@ -9,12 +9,12 @@
 </head>
 
 <body>
-    <article>
-
-        <?= $post ?>
-        
-    </article>
-
+        <article>
+            <h1> <?= $post->title ?> </h1>
+            <em> <?= $post->date ?> </em>
+            <p> <?= $post->body() ?> </p>
+        </article>
+    
     <a href="/">Go back</a>
 
 </body>
