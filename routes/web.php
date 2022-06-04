@@ -25,10 +25,13 @@ Route::get('/', function () {
     
     foreach ($files as $file) {
         $doc = YamlFrontMatter::parseFile($file);
-        $file_ext = File::extension($file);
-        $file_name = File::name($file);
-        $slug = str_replace(".{$file_ext}", "", $file_name);
-        $posts[] = new Post($doc->title, $doc->excerpt, $doc->date, $doc->body, $slug);
+        
+        $posts[] = new Post(
+            $doc->title,
+            $doc->excerpt,
+            $doc->date, 
+            $doc->body(), 
+            $doc->slug);
     }
 
     return view('posts', [ 'posts' => $posts ]);
