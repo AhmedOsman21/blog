@@ -30,7 +30,7 @@ class Post {
                     $doc->body(),
                     $doc->slug
                 )
-            )->sortBy(callback: 'date', descending: true);
+            )->sortByDesc('date');
     }
 
     public static function find($slug) {
