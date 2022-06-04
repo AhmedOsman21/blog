@@ -14,7 +14,7 @@
     <article>
         <h1> <?= $post->title ?> </h1>
         <em> <?= $post->date ?> </em>
-        <p> <?= $post->body() ?> </p>
+        <p> <?= $post->body ?> </p>
         <a href="/">Go back</a>
     </article>
 

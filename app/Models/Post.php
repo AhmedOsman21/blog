@@ -8,7 +8,6 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class Post {
 
-
     public function __construct(
         public $title,
         public $excerpt,
@@ -36,16 +35,6 @@ class Post {
 
     public static function find($slug) {
 
-        $path = resource_path("posts/{$slug}.html");
-
-        if (!file_exists($path)) {
-            throw (new ModelNotFoundException());
-        }
-
-        $doc = YamlFrontMatter::parse(file_get_contents($path));
-
-        $doc->date = date("Y-m-d", $doc->date);
-
-        return cache()->remember("posts.{$slug}", now()->addMinute(), fn () => $doc);
+        return static::all()->firstWhere('slug', $slug);
     }
 }
