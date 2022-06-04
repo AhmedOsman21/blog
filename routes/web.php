@@ -21,19 +21,20 @@ Route::get('/', function () {
 
     $files = File::files(resource_path('posts/'));
 
-    $posts = [];
-    
-    foreach ($files as $file) {
+    $posts = array_map(function($file) {
+
         $doc = YamlFrontMatter::parseFile($file);
-        
-        $posts[] = new Post(
+
+        return new Post(
             $doc->title,
             $doc->excerpt,
             $doc->date, 
             $doc->body(), 
-            $doc->slug);
-    }
-
+            $doc->slug
+        );
+        
+    }, $files); 
+    
     return view('posts', [ 'posts' => $posts ]);
 
 });
