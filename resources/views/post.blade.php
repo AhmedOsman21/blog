@@ -14,7 +14,7 @@
     <article>
         <h1> {{ $post->title }} </h1>
         <em> {{ $post->date }} </em>
-            <?= $post->body ?>
+        <div> {!! $post->body !!} </div>
         <a href="/">Go back</a>
     </article>
 
