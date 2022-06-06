@@ -12,9 +12,9 @@
 
 <body>
     <article>
-        <h1> <?= $post->title ?> </h1>
-        <em> <?= $post->date ?> </em>
-        <p> <?= $post->body ?> </p>
+        <h1> {{ $post->title }} </h1>
+        <em> {{ $post->date }} </em>
+            <?= $post->body ?>
         <a href="/">Go back</a>
     </article>
 
