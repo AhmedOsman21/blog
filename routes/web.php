@@ -28,4 +28,4 @@ Route::get('posts/{post}', function($slug) {
 
     return view('post', [ 'post' => Post::find($slug), 'singlePost' => true ]);
 
-})->where('post', '[A-z0-9-_]+');
+});
